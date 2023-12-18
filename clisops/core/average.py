@@ -31,7 +31,7 @@ def average_shape(
 ) -> Union[xr.DataArray, xr.Dataset]:
     """Average a DataArray or Dataset spatially using vector shapes.
 
-    Return a DataArray or Dataset averaged over each Polygon given. Requires xESMF >= 0.5.0.
+    Return a DataArray or Dataset averaged over each Polygon given. Requires xESMF.
 
     Parameters
     ----------

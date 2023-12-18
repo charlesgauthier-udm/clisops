@@ -854,7 +854,7 @@ def create_weight_masks(
 
     The returned masks values are the fraction of the corresponding polygon's area
     that is covered by the grid cell. Summing along the spatial dimension will give 1
-    for each geometry. Requires xESMF >= 0.5.0.
+    for each geometry. Requires xESMF.
 
     Parameters
     ----------
