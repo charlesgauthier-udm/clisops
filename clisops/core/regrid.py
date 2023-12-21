@@ -27,7 +27,7 @@ from clisops.utils.output_utils import FileLock, create_lock
 
 # Try importing xesmf and set to None if not found at correct version
 # If set to None, the `require_module` decorator will throw an exception
-XESMF_MINIMUM_VERSION = "0.7.0"
+XESMF_MINIMUM_VERSION = "0.8.2"
 try:
     import xesmf as xe
 
@@ -704,6 +704,20 @@ class Grid:
         yfirst = float(self.ds[self.lat].min())
         ylast = float(self.ds[self.lat].max())
 
+        # Perform roll if necessary
+        if xfirst < 0:
+            self.ds, low, high = clidu.cf_convert_between_lon_frames(
+                self.ds, [-180.0, 180.0]
+            )
+        else:
+            self.ds, low, high = clidu.cf_convert_between_lon_frames(
+                self.ds, [0.0, 360.0]
+            )
+
+        # Determine min/max lon/lat values
+        xfirst = float(self.ds[self.lon].min())
+        xlast = float(self.ds[self.lon].max())
+
         # Approximate the grid resolution
         if self.ds[self.lon].ndim == 2 and self.ds[self.lat].ndim == 2:
             xsize = self.nlon
@@ -755,6 +769,10 @@ class Grid:
         #        lon_min - approx_xres / 2.0,
         #        lon_max + approx_xres / 2.0,
         #    )
+        elif np.isclose(lon_min, lon_max):
+            raise Exception(
+                "Remapping zonal mean datasets or generally datasets without meridional extent is not supported."
+            )
         else:
             raise Exception(
                 "The longitude values have to be within the range (-180, 360)."

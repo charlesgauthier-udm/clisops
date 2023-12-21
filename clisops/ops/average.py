@@ -71,8 +71,8 @@ def average_over_dims(
     Returns
     -------
     List[Union[xr.Dataset, str]]
-    A list of the outputs in the format selected; str corresponds to file paths if the
-    output format selected is a file.
+        A list of the outputs in the format selected; str corresponds to file paths if the
+        output format selected is a file.
 
     Examples
     --------
@@ -102,7 +102,7 @@ class AverageShape(Operation):
             )
 
     def _get_file_namer(self):
-        extra = f"_avg-{'shape'}"
+        extra = "_avg-shape"
 
         namer = get_file_namer(self._file_namer)(extra=extra)
 
@@ -149,8 +149,8 @@ def average_shape(
     Returns
     -------
     List[Union[xr.Dataset, str]]
-      A list of the outputs in the format selected; str corresponds to file paths if the
-      output format selected is a file.
+        A list of the outputs in the format selected; str corresponds to file paths if the
+        output format selected is a file.
 
     Examples
     --------

@@ -1,6 +1,21 @@
 Version History
 ===============
 
+v0.12.2 (unreleased)
+--------------------
+
+New Features
+^^^^^^^^^^^^
+* ``clisops.ops.average.average_shape`` added (#312). Exposing average_shape from clisops.core to clisops.ops.
+
+Bug Fixes
+^^^^^^^^^
+* Now also applying fix for datasets with shifted longitude frames (#218) for the regrid operator (#313).
+
+Other Changes
+^^^^^^^^^^^^^
+* Warnings are now emitted when the user attempts to regrid a zonal mean dataset (#313).
+
 v0.12.1 (2023-11-30)
 --------------------
 
@@ -12,10 +27,6 @@ Other Changes
 ^^^^^^^^^^^^^
 * Warnings are now emitted if the user attempts to run the regridding utilities with a version of `xarray` that is not compatible with `cf-xarray`. (#310).
 * Dependency pins now constrain the `xarray` version when installing with `$ pip install ".[extra]"`. (#310).
-
-New Features
-^^^^^^^^^^^^
-* ``clisops.ops.average.average_shape`` added (#XXX). Exposing average_shape from clisops.core to clisops.ops.
 
 v0.12.0 (2023-11-23)
 --------------------
