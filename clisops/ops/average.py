@@ -135,13 +135,16 @@ def average_shape(
     shape : Union[str, Path, gpd.GeoDataFrame]
         Path to shape file, or directly a GeoDataFrame. Supports formats compatible with geopandas.
         Will be converted to EPSG:4326 if needed.
-
     variable : Optional[Union[str, Sequence[str], None]]
         Variables to average. If None, average over all data variables.
     output_dir : Optional[Union[str, Path]]
+        Path where to store the output files.
     output_type : {"netcdf", "nc", "zarr", "xarray"}
+        Output file format.
     split_method : {"time:auto"}
+        Strategy to split the output files along the time dimension.
     file_namer : {"standard", "simple"}
+        Strategy to name the output files.
 
     Returns
     -------
